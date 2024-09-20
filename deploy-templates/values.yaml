@@ -1,0 +1,31 @@
+rabbitmqCluster:
+  name: rabbitmq
+  replicas: 1
+
+  externalSecretName: ""
+
+  service:
+    type: ClusterIP
+
+  ingress:
+    enabled: false
+    dnsWildcard: rabbitmq.example.com
+    className: ""
+    annotations: {}
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+
+  persistence:
+    storage: 2Gi
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
