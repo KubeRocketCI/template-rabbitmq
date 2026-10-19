@@ -3,6 +3,12 @@ kind: RabbitmqCluster
 metadata:
   name: {{ .Values.rabbitmqCluster.name }}
 spec:
+  statefulSet:
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/instance: {{ .Release.Name | quote}}
   replicas: {{ .Values.rabbitmqCluster.replicas }}
   {{- if .Values.rabbitmqCluster.externalSecretName }}
   secretBackend:
